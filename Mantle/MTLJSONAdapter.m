@@ -375,9 +375,10 @@ NSString * const MTLJSONAdapterThrownExceptionErrorKey = @"MTLJSONAdapterThrownE
 			NSValueTransformer * (*function)(id, SEL) = (__typeof__(function))imp;
 			NSValueTransformer *transformer = function(modelClass, selector);
 
-			if (transformer != nil) result[key] = transformer;
-
-			continue;
+			if (transformer != nil) {
+				  result[key] = transformer;
+				  continue;
+			}
 		}
 
 		if ([modelClass respondsToSelector:@selector(JSONTransformerForKey:)]) {
